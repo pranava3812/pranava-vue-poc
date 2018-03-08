@@ -9,7 +9,7 @@
         <!--</members-card>-->
       </div>
       <div class="col-lg-8 col-md-7">
-        <chart-card @click="moveToDetails" :chart-data="preferencesChart.data"  chart-type="Pie">
+        <chart-card :chart-data="preferencesChart.data"  chart-type="Pie">
           <h4 class="title" slot="title">Email Statistics</h4>
           <span slot="subTitle"> Last campaign performance</span>
           <span slot="footer">
@@ -28,22 +28,18 @@
   import ChartDetails from './UserProfile/ChartDetails.vue'
   import MembersCard from './UserProfile/MembersCard.vue'
   import ChartCard from 'components/UIComponents/Cards/ChartCard.vue'
+  import PieChartStore from 'stores/PieChartStore'
   export default {
     components: {
       EditProfileForm,
       ChartDetails,
       MembersCard,
-      ChartCard
+      ChartCard,
+      PieChartStore
     },
     data () {
       return {
-        preferencesChart: {
-          data: {
-            labels: ['62%', '32%', '6%'],
-            series: [62, 32, 6]
-          },
-          options: {}
-        }
+        preferencesChart: PieChartStore.data.preferencesChart
       }
     }
   }

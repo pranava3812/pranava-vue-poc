@@ -4,55 +4,74 @@
       <form>
         <div class="form-group">
           <label for="exampleOpen">Open</label>
-          <input type="number" class="form-control" id="exampleOpen" placeholder="Enter Open">
+          <input v-model="stats.open" type="number" min="0" max="100" class="form-control" id="exampleOpen" placeholder="Enter Open">
         </div>
 
         <div class="form-group">
           <label for="exampleBounce">Bounce</label>
-          <input type="number" class="form-control" id="exampleBounce" placeholder="Enter Bounce">
+          <input v-model="stats.bounce" type="number" min="0" max="100" class="form-control" id="exampleBounce" placeholder="Enter Bounce">
         </div>
 
         <div class="form-group">
           <label for="exampleUnsubscribe">Unsubscribe</label>
-          <input type="number" class="form-control" id="exampleUnsubscribe" placeholder="Enter Unsubscribe">
+          <input v-model="stats.unsubscribe" type="number" min="0" max="100" class="form-control" id="exampleUnsubscribe" placeholder="Enter Unsubscribe">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" @click.prevent="updateProfile">Submit</button>
       </form>
     </div>
     <hr>
-    <div class="text-center">
-      <div class="row">
-        <div v-for="(info,index) in details" :class="getClasses(index)">
-          <h5>{{info.title}}
-            <br>
-            <small>{{info.subTitle}}</small>
-          </h5>
-        </div>
-      </div>
-    </div>
+    <!--<div class="text-center">-->
+      <!--<div class="row">-->
+        <!--<div v-for="(info,index) in details" :class="getClasses(index)">-->
+          <!--<h5>{{info.title}}-->
+            <!--<br>-->
+            <!--<small>{{info.subTitle}}</small>-->
+          <!--</h5>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
   </div>
 </template>
 <script>
+  import PieChartStore from 'stores/PieChartStore'
   export default {
+    components: {
+      PieChartStore
+    },
     data () {
       return {
-        details: [
-          {
-            title: '62%',
-            subTitle: 'open'
-          },
-          {
-            title: '6%',
-            subTitle: 'Bounce'
-          },
-          {
-            title: '32%',
-            subTitle: 'Unsubscribe'
-          }
-        ]
+        stats: {
+          open: PieChartStore.data.preferencesChart.data.series[0],
+          bounce: PieChartStore.data.preferencesChart.data.series[1],
+          unsubscribe: PieChartStore.data.preferencesChart.data.series[2]
+        },
+        // details: [
+        //   {
+        //     title: PieChartStore.data.preferencesChart.data.labels[0],
+        //     subTitle: 'Open'
+        //   },
+        //   {
+        //     title: PieChartStore.data.preferencesChart.data.labels[1],
+        //     subTitle: 'Bounce'
+        //   },
+        //   {
+        //     title: PieChartStore.data.preferencesChart.data.labels[2],
+        //     subTitle: 'Unsubscribe'
+        //   }
+        // ]
       }
     },
     methods: {
+      updateProfile () {
+        console.log('Your data: ' + JSON.stringify(this.stats))
+        let values = Object.values(this.stats)
+        values = values.map(value => Number(value))
+        if (values[0] + values[1] + values[2] !== 100) {
+          alert('sum of values should be equal to 100')
+          return
+        }
+        PieChartStore.methods.addEmailStats(values, this.$Chartist)
+      },
       getClasses (index) {
         var remainder = index % 3
         if (remainder === 0) {
