@@ -27,11 +27,24 @@
   import EditProfileForm from './UserProfile/EditProfileForm.vue'
   import ChartDetails from './UserProfile/ChartDetails.vue'
   import MembersCard from './UserProfile/MembersCard.vue'
+  import ChartCard from 'components/UIComponents/Cards/ChartCard.vue'
   export default {
     components: {
       EditProfileForm,
       ChartDetails,
-      MembersCard
+      MembersCard,
+      ChartCard
+    },
+    data () {
+      return {
+        preferencesChart: {
+          data: {
+            labels: ['62%', '32%', '6%'],
+            series: [62, 32, 6]
+          },
+          options: {}
+        }
+      }
     }
   }
 

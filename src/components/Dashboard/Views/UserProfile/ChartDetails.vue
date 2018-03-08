@@ -1,11 +1,23 @@
 <template>
   <div class="card card-user">
     <div class="content">
-      <p class="description text-center">
-        "I like the way you work it
-        <br> No diggity
-        <br> I wanna bag it up"
-      </p>
+      <form>
+        <div class="form-group">
+          <label for="exampleOpen">Open</label>
+          <input type="number" class="form-control" id="exampleOpen" placeholder="Enter Open">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleBounce">Bounce</label>
+          <input type="number" class="form-control" id="exampleBounce" placeholder="Enter Bounce">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleUnsubscribe">Unsubscribe</label>
+          <input type="number" class="form-control" id="exampleUnsubscribe" placeholder="Enter Unsubscribe">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
     <hr>
     <div class="text-center">
@@ -26,16 +38,16 @@
       return {
         details: [
           {
-            title: '12',
-            subTitle: 'Files'
+            title: '62%',
+            subTitle: 'open'
           },
           {
-            title: '2GB',
-            subTitle: 'Used'
+            title: '6%',
+            subTitle: 'Bounce'
           },
           {
-            title: '24,6$',
-            subTitle: 'Spent'
+            title: '32%',
+            subTitle: 'Unsubscribe'
           }
         ]
       }
