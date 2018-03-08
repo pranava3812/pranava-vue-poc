@@ -24,12 +24,12 @@ const routes = [
     children: [
       {
         path: 'overview',
-        name: 'overview',
+        name: 'Dashboard',
         component: Overview
       },
       {
         path: 'stats',
-        name: 'stats',
+        name: 'details',
         component: UserProfile
       },
       {

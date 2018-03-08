@@ -11,13 +11,10 @@
         <a class="navbar-brand">{{routeName}}</a>
       </div>
       <div class="navbar-right-menu">
-        <!--<router-link v-for="(link, index) in sidebarLinks" :to="link.path" tag="li" :ref="link.name">-->
-
         <ul class="nav navbar-nav navbar-right">
-          <router-link v-for="(link,index) in sidebarLinks" :to="link.path" tag="li" :ref="link.name">
+          <router-link v-for="(link,index) in TopBarLinksStore.topBarLinks" :to="link.path" tag="li" :ref="link.name">
             <a>
               <i :class="link.icon"></i>
-
               <p>{{link.name}}
               </p>
             </a>
@@ -28,59 +25,35 @@
   </nav>
 </template>
 <script>
+  import TopBarLinksStore from '../../../stores/TopBarLinksStore'
+
   export default {
     computed: {
-      routeName () {
-        const {name} = this.$route
+      routeName() {
+        const { name } = this.$route
         return this.capitalizeFirstLetter(name)
       }
     },
-    data () {
+    data() {
       return {
-        sidebarLinks: [
-          {
-            name: 'Home',
-            icon: 'ti-panel',
-            path: '/admin/overview'
-          },
-          {
-            name: 'Test 1',
-            icon: 'ti-user',
-            path: '/admin/stats'
-          },
-          {
-            name: 'Test 2',
-            icon: 'ti-view-list-alt',
-            path: '/admin/table-list'
-          },
-          {
-            name: 'Test 3',
-            icon: 'ti-text',
-            path: '/admin/typography'
-          },
-          {
-            name: 'Test 4',
-            icon: 'ti-pencil-alt2',
-            path: '/admin/icons'
-          }
-        ],
+        TopBarLinksStore: TopBarLinksStore.data,
         activeNotifications: false
       }
     },
     methods: {
-      capitalizeFirstLetter (string) {
+      capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1)
       },
-      toggleNotificationDropDown () {
+      toggleNotificationDropDown() {
         this.activeNotifications = !this.activeNotifications
       },
-      closeDropDown () {
+      closeDropDown() {
         this.activeNotifications = false
       },
-      toggleSidebar () {
+      toggleSidebar() {
         this.$sidebar.displaySidebar(!this.$sidebar.showSidebar)
       },
-      hideSidebar () {
+      hideSidebar() {
         this.$sidebar.displaySidebar(false)
       }
     }

@@ -7,7 +7,7 @@
       </p>
     </div>
     <div class="content">
-      <div :id="chartId" class="ct-chart"></div>
+      <div :id="chartId" class="ct-chart" style="cursor:pointer" @click="moveToDetails"></div>
       <div class="footer">
         <div class="chart-legend">
           <slot name="legend"></slot>
@@ -64,6 +64,9 @@
       /***
        * Initializes the chart by merging the chart options sent via props and the default chart options
        */
+      moveToDetails (x) {
+        this.$router.push('/admin/stats')
+      },
       initChart () {
         var chartIdQuery = `#${this.chartId}`
         this.$Chartist[this.chartType](chartIdQuery, this.chartData, this.chartOptions)

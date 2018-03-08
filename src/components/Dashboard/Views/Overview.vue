@@ -37,7 +37,7 @@
       </div>
 
       <div class="col-md-6 col-xs-12">
-        <chart-card :chart-data="preferencesChart.data"  chart-type="Pie">
+        <chart-card @click="moveToDetails" :chart-data="preferencesChart.data"  chart-type="Pie">
           <h4 class="title" slot="title">Email Statistics</h4>
           <span slot="subTitle"> Last campaign performance</span>
           <span slot="footer">
@@ -160,6 +160,9 @@
             series: [62, 32, 6]
           },
           options: {}
+        },
+        moveToDetails: (x) => {
+          console.log(x)
         }
 
       }
