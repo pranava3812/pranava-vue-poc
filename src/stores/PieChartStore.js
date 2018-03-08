@@ -4,8 +4,8 @@ const PieChartStore = {
     Chartist: Chartist,
     preferencesChart: {
       data: {
-        labels: ['62%', '32%', '5%'],
-        series: [62, 32, 5]
+        labels: ['62%', '32%', '6%'],
+        series: [62, 32, 6]
       },
       options: {}
     }
@@ -16,7 +16,7 @@ const PieChartStore = {
         labels: data.map(da => da + '%'),
         series: data
       }
-      $Chartist['Pie']('#div_912976142328', chartData, {})
+      $Chartist['Pie']('.ct-chart', chartData, {})
     }
   }
 }

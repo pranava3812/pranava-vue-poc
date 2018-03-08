@@ -77,7 +77,7 @@
       updateChartId () {
         var currentTime = new Date().getTime().toString()
         var randomInt = this.getRandomInt(0, currentTime)
-        this.chartId = `div_912976142328`
+        this.chartId = `div_${randomInt}`
       },
       getRandomInt (min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min
