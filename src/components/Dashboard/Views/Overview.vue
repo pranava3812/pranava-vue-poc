@@ -37,6 +37,7 @@
       </div>
 
       <div class="col-md-6 col-xs-12">
+        <!--POC: when clicked on the pie chart the got to preferencesChart.data method in ChartDetails.vue in line 44-->
         <chart-card @click="moveToDetails" :chart-data="preferencesChart.data"  chart-type="Pie">
           <h4 class="title" slot="title">Email Statistics</h4>
           <span slot="subTitle"> Last campaign performance</span>

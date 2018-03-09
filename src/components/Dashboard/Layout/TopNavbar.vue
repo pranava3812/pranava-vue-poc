@@ -25,15 +25,19 @@
   </nav>
 </template>
 <script>
+  //POC: importing th top bar links from Home to all others
   import TopBarLinksStore from '../../../stores/TopBarLinksStore'
 
   export default {
+    //POC: Compute the capitalization of the first letter all over the route
     computed: {
+      //POC: Get all the names and capitalize the first letter
       routeName() {
         const { name } = this.$route
         return this.capitalizeFirstLetter(name)
       }
     },
+    //POC: To get the data from TopBarLinksStore data for the Home and all other
     data() {
       return {
         TopBarLinksStore: TopBarLinksStore.data,
@@ -41,9 +45,12 @@
       }
     },
     methods: {
+      //POC needed capitalization for the first letter
       capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1)
       },
+
+      //dont need right now its for notification and side bar which was removed for POC
       toggleNotificationDropDown() {
         this.activeNotifications = !this.activeNotifications
       },
@@ -56,6 +63,7 @@
       hideSidebar() {
         this.$sidebar.displaySidebar(false)
       }
+      //end of donot needed for the POC
     }
   }
 

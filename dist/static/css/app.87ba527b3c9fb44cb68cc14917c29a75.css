@@ -8278,7 +8278,7 @@ textarea.form-control {
 }
 .navbar .navbar-brand {
     font-weight: 600;
-    margin: 5px 0px;
+  margin-left: 450px !important;
     padding: 20px 15px;
     font-size: 20px;
 }

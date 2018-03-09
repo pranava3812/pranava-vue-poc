@@ -1,5 +1,11 @@
 <template>
     <div class="row">
+      <div class="col-lg-3 col-md-4">
+        <h1>Pie chart</h1>
+        <p> This is pie chart which have a feature of changing upon inputs given by the user. This is the exercise given
+        for vue js with chart js. Please enter the inputs that are summable to 100. </p>
+
+      </div>
       <div class="col-lg-4 col-md-5">
         <chart-details>
 

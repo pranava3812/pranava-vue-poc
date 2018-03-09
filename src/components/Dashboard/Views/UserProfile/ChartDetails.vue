@@ -1,6 +1,7 @@
 <template>
   <div class="card card-user">
     <div class="content">
+      <!--POC: This is for giving inputs for the pie chart. sum should be 100-->
       <form>
         <div class="form-group">
           <label for="exampleOpen">Open</label>
@@ -33,6 +34,7 @@
   </div>
 </template>
 <script>
+  /*POC: import the pie chart data from pie chart store*/
   import PieChartStore from 'stores/PieChartStore'
   export default {
     components: {
@@ -40,6 +42,7 @@
     },
     data () {
       return {
+        /*POC: map the  v-model="stats.open" accordingly mentioned in the template above */
         stats: {
           open: PieChartStore.data.preferencesChart.data.series[0],
           bounce: PieChartStore.data.preferencesChart.data.series[1],
@@ -63,15 +66,18 @@
     },
     methods: {
       updateProfile () {
-        console.log('Your data: ' + JSON.stringify(this.stats))
+       /*POC: Get the values entered accordingly and update the pie chart*/
         let values = Object.values(this.stats)
         values = values.map(value => Number(value))
+        /*POC: check if the sum of values entered is =100 or not or else throw alert*/
         if (values[0] + values[1] + values[2] !== 100) {
           alert('sum of values should be equal to 100')
           return
         }
         PieChartStore.methods.addEmailStats(values, this.$Chartist)
       },
+
+      /*POC: No need as of now for poc*/
       getClasses (index) {
         var remainder = index % 3
         if (remainder === 0) {
