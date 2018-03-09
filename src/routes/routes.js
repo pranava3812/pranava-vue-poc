@@ -4,7 +4,8 @@ import NotFound from '../components/GeneralViews/NotFoundPage.vue'
 
 // Admin pages
 import Overview from 'src/components/Dashboard/Views/Overview.vue'
-import UserProfile from 'src/components/Dashboard/Views/UserProfile.vue'
+import PieChartProfile from 'src/components/Dashboard/Views/PieChartProfile.vue'
+import LineChartProfile from 'src/components/Dashboard/Views/LineChartProfile.vue'
 import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
 import Icons from 'src/components/Dashboard/Views/Icons.vue'
 import Maps from 'src/components/Dashboard/Views/Maps.vue'
@@ -28,9 +29,19 @@ const routes = [
         component: Overview
       },
       {
-        path: 'stats',
+        path: 'line',
         name: 'details',
-        component: UserProfile
+        component: LineChartProfile
+      },
+      {
+        path: 'pie',
+        name: 'details',
+        component: PieChartProfile
+      },
+      {
+        path: 'area',
+        name: 'details',
+        component: PieChartProfile
       },
       {
         path: 'notifications',

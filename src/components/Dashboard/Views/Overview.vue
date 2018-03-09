@@ -22,23 +22,10 @@
     <!--Charts-->
     <div class="row">
 
-      <div class="col-xs-12">
-        <chart-card :chart-data="usersChart.data" :chart-options="usersChart.options">
-          <h4 class="title" slot="title">Users behavior</h4>
-          <span slot="subTitle"> 24 Hours performance</span>
-          <span slot="footer">
-            <i class="ti-reload"></i> Updated 3 minutes ago</span>
-          <div slot="legend">
-            <i class="fa fa-circle text-info"></i> Open
-            <i class="fa fa-circle text-danger"></i> Click
-            <i class="fa fa-circle text-warning"></i> Click Second Time
-          </div>
-        </chart-card>
-      </div>
-
       <div class="col-md-6 col-xs-12">
-        <!--POC: when clicked on the pie chart the got to preferencesChart.data method in ChartDetails.vue in line 44-->
-        <chart-card @click="moveToDetails" :chart-data="preferencesChart.data"  chart-type="Pie">
+        <!--POC: when clicked on the pie chart the got to preferencesChart.data method in
+        PieChartDetails.vue in line 44-->
+        <chart-card :chart-data="preferencesChart.data"  chart-type="Pie">
           <h4 class="title" slot="title">Email Statistics</h4>
           <span slot="subTitle"> Last campaign performance</span>
           <span slot="footer">
@@ -52,7 +39,7 @@
       </div>
 
       <div class="col-md-6 col-xs-12">
-        <chart-card :chart-data="activityChart.data" :chart-options="activityChart.options">
+        <chart-card :chart-data="activityChart.data" :chart-options="activityChart.options" >
           <h4 class="title" slot="title">2015 Sales</h4>
           <span slot="subTitle"> All products including Taxes</span>
           <span slot="footer">
@@ -60,6 +47,20 @@
           <div slot="legend">
             <i class="fa fa-circle text-info"></i> Tesla Model S
             <i class="fa fa-circle text-warning"></i> BMW 5 Series
+          </div>
+        </chart-card>
+      </div>
+
+      <div class="col-md-6 col-xs-12">
+        <chart-card :chart-data="usersChart.data" :chart-options="usersChart.options">
+          <h4 class="title" slot="title">Users behavior</h4>
+          <span slot="subTitle"> 24 Hours performance</span>
+          <span slot="footer">
+            <i class="ti-reload"></i> Updated 3 minutes ago</span>
+          <div slot="legend">
+            <i class="fa fa-circle text-info"></i> Open
+            <i class="fa fa-circle text-danger"></i> Click
+            <i class="fa fa-circle text-warning"></i> Click Second Time
           </div>
         </chart-card>
       </div>

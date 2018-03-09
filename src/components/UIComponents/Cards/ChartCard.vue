@@ -65,7 +65,7 @@
        * Initializes the chart by merging the chart options sent via props and the default chart options
        */
       moveToDetails (x) {
-        this.$router.push('/admin/stats')
+        this.$router.push(`/admin/${this.chartType.toLowerCase()}`)
       },
       initChart () {
         var chartIdQuery = `#${this.chartId}`
