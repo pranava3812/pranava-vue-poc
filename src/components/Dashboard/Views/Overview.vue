@@ -77,9 +77,7 @@
       StatsCard,
       ChartCard
     },
-    /**
-     * Chart data used to render stats, charts. Should be replaced with server data
-     */
+  // comments 2
     data () {
       return {
         // statsCards: [
